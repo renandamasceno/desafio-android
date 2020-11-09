@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">Digital House Foods</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="emailError">Por favor, digite o e-mail</string>
+    <string name="log_in">LOG IN</string>
+    <string name="register">REGISTER</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="name">Name</string>
+    <string name="passwordError" >A senha não pode estar em branco e deve ter pelo menos 8 caracteres</string>
 </resources>
