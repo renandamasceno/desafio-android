@@ -1,4 +1,4 @@
-package com.renan.desafioandroid
+package com.renan.desafioandroid.view
 
 import android.os.Bundle
 
@@ -10,6 +10,7 @@ import android.widget.Button
 import androidx.navigation.Navigation
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
+import com.renan.desafioandroid.R
 
 
 class LoginFragment : Fragment() {

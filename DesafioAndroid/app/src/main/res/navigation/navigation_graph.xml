@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.renan.desafioandroid.LoginFragment"
+        android:name="com.renan.desafioandroid.view.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
-        android:name="com.renan.desafioandroid.RegisterFragment"
+        android:name="com.renan.desafioandroid.view.RegisterFragment"
         android:label="fragment_register"
         tools:layout="@layout/fragment_register" >
         <action
@@ -28,7 +28,24 @@
     </fragment>
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.renan.desafioandroid.HomeFragment"
+        android:name="com.renan.desafioandroid.view.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_menuRestauranteFragment"
+            app:destination="@id/menuRestauranteFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/menuRestauranteFragment"
+        android:name="com.renan.desafioandroid.view.MenuRestauranteFragment"
+        android:label="fragment_menu_restaurante"
+        tools:layout="@layout/fragment_menu_restaurante" >
+        <action
+            android:id="@+id/action_menuRestauranteFragment_to_pratoFragment2"
+            app:destination="@id/pratoFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/pratoFragment2"
+        android:name="com.renan.desafioandroid.view.PratoFragment"
+        android:label="PratoFragment" />
 </navigation>
