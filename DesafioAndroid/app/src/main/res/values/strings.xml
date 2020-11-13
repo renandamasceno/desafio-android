@@ -10,4 +10,5 @@
     <string name="name">Name</string>
     <string name="passwordError">A senha não pode estar em branco e deve ter pelo menos 8 caracteres</string>
     <string name="tony_roma_s" />
+    <string name="passwordErrorRepeat">A senha não pode estar em branco e deve ser igual a anterior</string>
 </resources>

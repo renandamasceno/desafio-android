@@ -5,30 +5,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.EditText
+import androidx.navigation.Navigation
+import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
 import com.renan.desafioandroid.R
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [RegisterFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class RegisterFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,23 +24,67 @@ class RegisterFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_register, container, false)
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment RegisterFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            RegisterFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val navController = Navigation.findNavController(view)
+
+        view.findViewById<Button>(R.id.btnRegisterCompleted).setOnClickListener {
+
+            var contador: Int = 0
+
+            val tilName = view.findViewById<TextInputLayout>(R.id.tilName)
+            val edtTextName = view.findViewById<TextInputEditText>(R.id.txtName)
+
+            val tilEmail = view.findViewById<TextInputLayout>(R.id.tilEmailResgister)
+            val edtEmail = view.findViewById<TextInputEditText>(R.id.txtEmailRegister)
+
+            val tilPassword = view.findViewById<TextInputLayout>(R.id.tilPasswordRegister)
+            val edtPassword = view.findViewById<TextInputEditText>(R.id.txtPasswordRegister)
+
+            val tilPasswordRepeat = view.findViewById<TextInputLayout>(R.id.tilPasswordRegisterRepeat)
+            val edtPasswordRepeat = view.findViewById<TextInputEditText>(R.id.txtPasswordRegisterRepeat)
+
+            if (edtTextName.text?.isEmpty()!!) {
+                tilName.error = "O campo nome não pode estar vazio"
+            } else {
+                tilName.error = null
+                contador++
             }
+
+            if (edtEmail.text?.isEmpty()!!) {
+                tilEmail.error = getString(R.string.emailError)
+            } else {
+                tilEmail.error = null
+                contador++
+            }
+
+            if (!validaPassword(edtPassword)) {
+                tilPassword.error = getString(R.string.passwordError)
+            } else {
+                tilPassword.error = null
+                contador++
+            }
+
+            if (!validaPassword(edtPasswordRepeat) || edtPassword.text.toString() != edtPasswordRepeat.text.toString()) {
+                tilPasswordRepeat.error = getString(R.string.passwordErrorRepeat)
+            } else {
+                tilPasswordRepeat.error = null
+                contador++
+            }
+
+            if(contador>3){
+                navController.navigate(R.id.homeFragment)
+            }
+
+
+        }
+
+    }
+    private fun validaPassword(text: TextInputEditText): Boolean {
+        if (text.text?.isEmpty()!!) {
+            return false
+        } else return text.text?.length!! >= 8
+
     }
 }
