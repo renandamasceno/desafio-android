@@ -40,20 +40,26 @@ class LoginFragment : Fragment() {
             val tilPassword = view.findViewById<TextInputLayout>(R.id.tilPassword)
             val edtTextPassword = view.findViewById<TextInputEditText>(R.id.editTextPassword)
 
+            var contador: Int = 0
 
 
-            if(edtTextEmail.text?.isEmpty()!!){
+            if (edtTextEmail.text?.isEmpty()!!) {
                 tilEmail.error = getString(R.string.emailError)
             } else {
                 tilEmail.error = null
+                contador++
             }
 
-            if(!validaPassword(edtTextPassword)){
+            if (!validaPassword(edtTextPassword)) {
                 tilPassword.error = getString(R.string.passwordError)
             } else {
                 tilPassword.error = null
+                contador++
             }
 
+            if(contador>1){
+                navController.navigate(R.id.homeFragment)
+            }
 
         }
 
@@ -62,8 +68,8 @@ class LoginFragment : Fragment() {
         }
     }
 
-    private fun validaPassword(text: TextInputEditText):Boolean {
-        if(text.text?.isEmpty()!!){
+    private fun validaPassword(text: TextInputEditText): Boolean {
+        if (text.text?.isEmpty()!!) {
             return false
         } else return text.text?.length!! >= 8
 

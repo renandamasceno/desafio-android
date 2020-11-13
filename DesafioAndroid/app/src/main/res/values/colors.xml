@@ -7,4 +7,5 @@
     <color name="colorButton">#FF5252</color>
     <color name="colorButtonRegistro">#8492A6</color>
     <color name="colorGraw">#47525E</color>
+    <color name="colorBlack">#000000</color>
 </resources>
